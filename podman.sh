@@ -34,7 +34,7 @@ function easy_usage(){
 function build_podman(){
     if [ -e $CURRENT_DIRECTORY/build-podman ]; then	
         echo "Yes file is there"
-        mv  build-podman  $COMMANDS_DIRECTORY
+        cp  build-podman  $COMMANDS_DIRECTORY
     else
 
         curl "$SCRIPT_URL/build-podman" -o build-podman
@@ -47,7 +47,7 @@ function build_podman(){
 function connect_container(){
     if [ -e $CURRENT_DIRECTORY/connect-podman ]; then	
         echo "Yes file is there"
-        mv  connect-podman  $COMMANDS_DIRECTORY
+        cp  connect-podman  $COMMANDS_DIRECTORY
 
     else
         curl "$SCRIPT_URL/connect-podman" -o connect-podman
@@ -58,7 +58,7 @@ function connect_container(){
 
 function podman_restart(){
     if [ -e $CURRENT_DIRECTORY/restart-podman ]; then	
-        mv  restart-podman  $COMMANDS_DIRECTORY
+        cp  restart-podman  $COMMANDS_DIRECTORY
  
     else
         curl "$SCRIPT_URL/restart-podman" -o restart-podman
@@ -69,7 +69,7 @@ function podman_restart(){
 
 function podman_restart_compose(){
     if [ -e $CURRENT_DIRECTORY/restart-podman-compose ]; then	        
-        mv  restart-podman-compose  $COMMANDS_DIRECTORY
+        cp  restart-podman-compose  $COMMANDS_DIRECTORY
  
     else
         curl "$SCRIPT_URL/restart-podman-compose" -o restart-podman-compose
@@ -80,7 +80,7 @@ function podman_restart_compose(){
 function dangling_remove_podman(){
 
     if [ -e $CURRENT_DIRECTORY/dangling-podman ]; then	
-        mv dangling-podman $COMMANDS_DIRECTORY
+        cp dangling-podman $COMMANDS_DIRECTORY
     else
         curl "$SCRIPT_URL/dangling-podman" -o dangling-podman
         mv  dangling-podman  $COMMANDS_DIRECTORY
@@ -90,7 +90,7 @@ function dangling_remove_podman(){
 
 function podman_compose_logs(){
     if [ -e $CURRENT_DIRECTORY/podman-compose-logs ]; then	        
-        mv  podman-compose-logs  $COMMANDS_DIRECTORY
+        cp  podman-compose-logs  $COMMANDS_DIRECTORY
 
     else
         curl "$SCRIPT_URL/podman-compose-logs" -o podman-compose-logs
@@ -102,7 +102,7 @@ function podman_compose_logs(){
 function down_podman_containers(){
 
     if [ -e $CURRENT_DIRECTORY/down-podman ]; then	
-        mv  down-podman  $COMMANDS_DIRECTORY
+        cp  down-podman  $COMMANDS_DIRECTORY
 
     else
         curl "$SCRIPT_URL/down-podman" -o down-podman

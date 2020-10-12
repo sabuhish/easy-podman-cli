@@ -7,7 +7,7 @@ function dangling_remove_images(){
 
     DANGLING_IMAGES=$(podman images -qf "dangling=true")
     if [[ -n $DANGLING_IMAGES ]]; then
-        docker rmi "$DANGLING_IMAGES"
+        podman rmi "$DANGLING_IMAGES"
         echo "Succefully removed dangling images"
     else
         echo "No dangling images"
@@ -20,7 +20,7 @@ function dangling_remove_containers(){
 
     DANGLING_CONTAINERS=$(podman ps -a -f status=exited -q)
     if [[ -n $DANGLING_CONTAINERS ]]; then
-        docker rm "$DANGLING_CONTAINERS"
+        podman rm "$DANGLING_CONTAINERS"
         echo "Succefully removed dangling containers"
     else
         echo "No dangling containers"
