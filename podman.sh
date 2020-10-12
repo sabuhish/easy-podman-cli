@@ -6,6 +6,7 @@ VERSION="0.1"
 ISSUE_URL="https://github.com/sabuhish/easy-podman-cli"
 README_URL="https://github.com/sabuhish/easy-podman-cli"
 
+SCRIPT_URL="https://github.com/sabuhish/easy-podman-cli/blob/master"
 
 CURRENT_DIRECTORY=$(pwd)
 COMMANDS_DIRECTORY=/usr/local/bin/
@@ -35,9 +36,8 @@ function build_podman(){
         echo "Yes file is there"
         mv  build-podman  $COMMANDS_DIRECTORY
     else
-        curl "$README_URL" -o build-podman
 
-        echo "No such a file"
+        curl "$SCRIPT_URL/build-podman" -o build-podman
         mv  build-podman  $COMMANDS_DIRECTORY
     fi
 
@@ -50,66 +50,51 @@ function connect_container(){
         mv  connect-podman  $COMMANDS_DIRECTORY
 
     else
-        #curl "$README_URL" -o connect-podman
-
-        echo "No such a file"
-        # mv  connect-podman  $COMMANDS_DIRECTORY
+        curl "$SCRIPT_URL/connect-podman" -o connect-podman
+        mv  connect-podman  $COMMANDS_DIRECTORY
     fi
 }
 
 
 function podman_restart(){
     if [ -e $CURRENT_DIRECTORY/restart-podman ]; then	
-        echo "Yes file is there"
-        
         mv  restart-podman  $COMMANDS_DIRECTORY
  
     else
-        #curl "$README_URL" -o dangling-podman
-        echo "No such a file"
-        # mv  restart-podman  $COMMANDS_DIRECTORY
+        curl "$SCRIPT_URL/restart-podman" -o restart-podman
+        mv  restart-podman  $COMMANDS_DIRECTORY
     fi
 }
 
 
 function podman_restart_compose(){
-    if [ -e $CURRENT_DIRECTORY/restart-podman-compose ]; then	
-        echo "Yes file is there"
-        
+    if [ -e $CURRENT_DIRECTORY/restart-podman-compose ]; then	        
         mv  restart-podman-compose  $COMMANDS_DIRECTORY
  
     else
-        #curl "$README_URL" -o  restart-podman-compose
-        echo "No such a file"
-        # mv  restart-podman-compose  $COMMANDS_DIRECTORY
+        curl "$SCRIPT_URL/restart-podman-compose" -o restart-podman-compose
+        mv  restart-podman-compose  $COMMANDS_DIRECTORY
     fi
 }
 
 function dangling_remove_podman(){
 
     if [ -e $CURRENT_DIRECTORY/dangling-podman ]; then	
-        echo "Yes file is there"
-        ls -la
         mv dangling-podman $COMMANDS_DIRECTORY
     else
-        #curl "$README_URL" -o dangling-podman
-        echo "No such a file"
-        # mv  dangling-podman  $COMMANDS_DIRECTORY
+        curl "$SCRIPT_URL/dangling-podman" -o dangling-podman
+        mv  dangling-podman  $COMMANDS_DIRECTORY
     fi
 
 }
 
 function podman_compose_logs(){
-    if [ -e $CURRENT_DIRECTORY/podman-compose-logs ]; then	
-        echo "Yes file is there"
-        
+    if [ -e $CURRENT_DIRECTORY/podman-compose-logs ]; then	        
         mv  podman-compose-logs  $COMMANDS_DIRECTORY
 
     else
-        #curl "$README_URL" -o podman-compose-logs
-
-        echo "No such a file"
-        # mv  podman-compose-logs  $COMMANDS_DIRECTORY
+        curl "$SCRIPT_URL/podman-compose-logs" -o podman-compose-logs
+        mv  podman-compose-logs  $COMMANDS_DIRECTORY
     fi
 
 }
@@ -117,14 +102,11 @@ function podman_compose_logs(){
 function down_podman_containers(){
 
     if [ -e $CURRENT_DIRECTORY/down-podman ]; then	
-        echo "Yes file is there"
         mv  down-podman  $COMMANDS_DIRECTORY
 
     else
-        #curl "$README_URL" -o down-podman
-        # mv  down-podman  $COMMANDS_DIRECTORY
-
-        echo "No such a file"
+        curl "$SCRIPT_URL/down-podman" -o down-podman
+        mv  down-podman  $COMMANDS_DIRECTORY
     fi
 }
 
@@ -141,7 +123,7 @@ function apply_comands(){
         podman_compose_logs
         podman_restart
         podman_restart_compose
-
+       
         cd $COMMANDS_DIRECTORY
 
         chmod +x dangling-podman
@@ -166,6 +148,5 @@ function apply_comands(){
     fi
 
 }
-# easy_usage
-apply_comands
 
+rm -rf podman.sh
