@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+function restart_podman(){
+
+    echo -e "Restarting container $1 \n"
+
+    podman restart $1
+
+}
+
+
+restart_podman $1

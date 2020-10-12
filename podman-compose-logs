@@ -1,0 +1,27 @@
+# #!/bin/bash
+
+
+function compose_logs(){
+if [[ ! "$1" ]]; then
+
+    echo -e "Taling all logs on podman compose\n"
+    podman-compose logs [-f]
+
+else
+    if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+        echo "Integer number required"
+        exit 1
+        
+    elif [ $1 -le 0 ]; then
+        echo -e "Tail should be above 0\n"
+        exit 1
+
+    else 
+        echo -e "Taling all logs on podman compose with tail $1\n"
+        podman-compose logs -f --tail $1
+    fi
+fi
+
+}
+
+compose_logs $1

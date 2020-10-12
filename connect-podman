@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+function connect_container(){
+    if [[ ! "$1" && ! "$2" ]]; then
+        echo "Please specify container and execution type"
+        exit 1
+    else
+        echo -e "Connecting to $1 with $2 \n"
+        podman exec -it  $1 $2
+    fi
+
+}
+
+connect_container $1 $2
+
+

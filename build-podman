@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function podman_compose_up(){
+    echo -e "Building podman-compose containers \n"
+    podman-compose up --build -d
+    echo ""
+    echo -e "Successfuly build .... [OK]"
+}
+
+podman_compose_up
