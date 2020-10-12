@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author Sabuhi Shukurov
-VERSION="0.1"
+VERSION="0.2"
 
 ISSUE_URL="https://github.com/sabuhish/easy-podman-cli"
 README_URL="https://github.com/sabuhish/easy-podman-cli"
@@ -14,26 +14,9 @@ COMMANDS_DIRECTORY=/usr/local/bin/
 # The set -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
 set -e
 
-function easy_usage(){
-    echo ""
-    echo -e "easy-podman version: $VERSION"
-    echo -e "Author Sabuhi Shukurov"
-    echo -e "Email: sabuhi.shukurov@gmail.com\n"
-    echo -e "Usefull Commands:"
-    echo ""
-    echo -e "\t build-podman        Building multi-containers. Comand should given where your docker-compose file exist"
-    echo -e "\t dangling-podman     This comand removes inactive containers and stalled images"
-    echo -e "\t connect-podman      Executing inside running docker container, with execution type"
-    echo -e "\t down-podman         Stoping runnig multi-containers in the directory"
-    echo ""
-    echo -en "Please see the README file for more info $README_URL\n\n"
-}
-
-
 
 function build_podman(){
     if [ -e $CURRENT_DIRECTORY/build-podman ]; then	
-        echo "Yes file is there"
         cp  build-podman  $COMMANDS_DIRECTORY
     else
 
@@ -46,7 +29,6 @@ function build_podman(){
 
 function connect_container(){
     if [ -e $CURRENT_DIRECTORY/connect-podman ]; then	
-        echo "Yes file is there"
         cp  connect-podman  $COMMANDS_DIRECTORY
 
     else
@@ -111,6 +93,17 @@ function down_podman_containers(){
 }
 
 
+function usage(){
+    if [ -e $CURRENT_DIRECTORY/easy-podman ]; then	
+        cp  easy-podman  $COMMANDS_DIRECTORY
+
+    else
+        curl "$SCRIPT_URL/easy-podman" -o easy-podman
+        mv  easy-podman  $COMMANDS_DIRECTORY
+    fi
+}
+
+
 function apply_comands(){
     #checking if user is root 0 => root !0  is non-root user
     if [[ $EUID -eq 0 ]]; then
@@ -121,6 +114,7 @@ function apply_comands(){
         podman_compose_logs
         podman_restart
         podman_restart_compose
+        usage
        
         cd $COMMANDS_DIRECTORY
 
@@ -131,6 +125,7 @@ function apply_comands(){
         chmod +x podman-compose-logs
         chmod +x restart-podman
         chmod +x restart-podman-compose
+        chmod +x easy-podman
 
         cd $CURRENT_DIRECTORY
 
@@ -149,4 +144,4 @@ function apply_comands(){
 
 apply_comands
 
-rm -rf podman.sh
+# rm -rf podman.sh

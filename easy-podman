@@ -1,0 +1,29 @@
+#!/bin/bash
+VERSION="0.1"
+
+README_URL="https://github.com/sabuhish/easy-podman-cli"
+
+function easy_podman_usage(){
+
+    if [[ "$1" == "-h" || $1 == "--help" ]]; then
+  
+        echo ""
+        echo -e "easy-podman version: $VERSION"
+        echo -e "Author Sabuhi Shukurov"
+        echo -e "Email: sabuhi.shukurov@gmail.com\n"
+        echo -e "Usefull Commands:"
+        echo ""
+        echo -e "\t build-podman        Building multi-containers. Comand should given where your docker-compose file exist"
+        echo -e "\t dangling-podman     This comand removes inactive containers and stalled images"
+        echo -e "\t connect-podman      Executing inside running docker container, with execution type"
+        echo -e "\t down-podman         Stoping runnig multi-containers in the directory"
+        echo ""
+        echo -en "Please see the README file for more info $README_URL\n\n"
+        exit 0
+    else
+        echo "Unknown command, try with easy-podman -h, --help"
+    fi
+
+}
+
+easy_podman_usage $1
