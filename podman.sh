@@ -114,8 +114,6 @@ function down_podman_containers(){
 function apply_comands(){
     #checking if user is root 0 => root !0  is non-root user
     if [[ $EUID -eq 0 ]]; then
-        echo "root user"
-
         dangling_remove_podman
         connect_container
         build_podman
