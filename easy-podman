@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="0.1"
+VERSION="0.3"
 
 README_URL="https://github.com/sabuhish/easy-podman-cli"
 
@@ -13,12 +13,16 @@ function easy_podman_usage(){
         echo -e "Email: sabuhi.shukurov@gmail.com\n"
         echo -e "Usefull Commands:"
         echo ""
-        echo -e "\t build-podman        Building multi-containers. Comand should given where your docker-compose file exist"
-        echo -e "\t dangling-podman     This comand removes inactive containers and stalled images"
-        echo -e "\t connect-podman      Executing inside running docker container, with execution type"
-        echo -e "\t down-podman         Stoping runnig multi-containers in the directory"
+        echo -e "\t build-podman             Building multi-containers. Comand should given where your docker-compose file exist"
+        echo -e "\t dangling-podman          This comand removes inactive containers and stalled images"
+        echo -e "\t connect-podman           Executing inside running docker container, with execution type, arguments required"
+        echo -e "\t down-podman              Stoping runnig multi-containers in the directory"
+        echo -e "\t restart-podman           Restarting container, argument required"
+        echo -e "\t restart-podman-compose   Restarting podman-compose"
+        echo -e "\t podman-compose-logs      Logs for running multi-containers"
+
         echo ""
-        echo -en "Please see the README file for more info $README_URL\n\n"
+        echo -en "Please see the README file for more information: $README_URL\n\n"
         exit 0
     else
         echo "Unknown command, try with easy-podman -h, --help"

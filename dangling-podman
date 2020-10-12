@@ -2,28 +2,29 @@
 
 
 function dangling_remove_images(){
-    echo -e "Remove all exited images"
+    echo -e "Remove all exited images\n"
 
 
     DANGLING_IMAGES=$(podman images -qf "dangling=true")
     if [[ -n $DANGLING_IMAGES ]]; then
         podman rmi "$DANGLING_IMAGES"
-        echo "Succefully removed dangling images"
+        echo -e "Succefully removed dangling images\n"
     else
-        echo "No dangling images"
+        echo -e "No dangling images"
     fi
 }
 
 function dangling_remove_containers(){
+    echo -ne "\n*****************************************\n"
 
-    echo -e "Remove all exited containers"
+    echo -e "Remove all exited containers\n"
 
     DANGLING_CONTAINERS=$(podman ps -a -f status=exited -q)
     if [[ -n $DANGLING_CONTAINERS ]]; then
         podman rm "$DANGLING_CONTAINERS"
-        echo "Succefully removed dangling containers"
+        echo -e "Succefully removed dangling containers\n"
     else
-        echo "No dangling containers"
+        echo -e "No dangling containers\n"
     fi
 }
 dangling_remove_images

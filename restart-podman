@@ -3,9 +3,15 @@
 
 function restart_podman(){
 
-    echo -e "Restarting container $1 \n"
+    if [ ! "$1" ]; then
+        echo "Please specify container in order to restart"
+        exit 1
+    
+    else
 
-    podman restart $1
+        echo -e "Restarting container $1 \n"
+        podman restart $1
+    fi
 
 }
 

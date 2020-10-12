@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Author Sabuhi Shukurov
-VERSION="0.2"
+VERSION="0.3"
 
-ISSUE_URL="https://github.com/sabuhish/easy-podman-cli"
-README_URL="https://github.com/sabuhish/easy-podman-cli"
+ISSUE_URL="https://github.com/sabuhish/easy-podman-cli/issues"
+README_URL="https://github.com/sabuhish/easy-podman-cli/blob/master/README.md"
 
 SCRIPT_URL="https://raw.githubusercontent.com/sabuhish/easy-podman-cli/master"
 
@@ -15,92 +15,61 @@ COMMANDS_DIRECTORY=/usr/local/bin/
 set -e
 
 
-function build_podman(){
-    if [ -e $CURRENT_DIRECTORY/build-podman ]; then	
-        cp  build-podman  $COMMANDS_DIRECTORY
-    else
+function proceed_before_apply(){
+    if [ -e $CURRENT_DIRECTORY/$1 ]; then	
+        cp  $1  $COMMANDS_DIRECTORY
 
-        curl "$SCRIPT_URL/build-podman" -o build-podman
-        mv  build-podman  $COMMANDS_DIRECTORY
+    else
+        curl "$SCRIPT_URL/$1" -o $1
+        mv  $1  $COMMANDS_DIRECTORY
+
     fi
+
+}
+
+function build_podman(){
+    proceed_before_apply  build-podman
 
 }
 
 
 function connect_container(){
-    if [ -e $CURRENT_DIRECTORY/connect-podman ]; then	
-        cp  connect-podman  $COMMANDS_DIRECTORY
-
-    else
-        curl "$SCRIPT_URL/connect-podman" -o connect-podman
-        mv  connect-podman  $COMMANDS_DIRECTORY
-    fi
+    proceed_before_apply connect-podman
+    
 }
 
 
 function podman_restart(){
-    if [ -e $CURRENT_DIRECTORY/restart-podman ]; then	
-        cp  restart-podman  $COMMANDS_DIRECTORY
  
-    else
-        curl "$SCRIPT_URL/restart-podman" -o restart-podman
-        mv  restart-podman  $COMMANDS_DIRECTORY
-    fi
+    proceed_before_apply restart-podman
 }
 
 
 function podman_restart_compose(){
-    if [ -e $CURRENT_DIRECTORY/restart-podman-compose ]; then	        
-        cp  restart-podman-compose  $COMMANDS_DIRECTORY
- 
-    else
-        curl "$SCRIPT_URL/restart-podman-compose" -o restart-podman-compose
-        mv  restart-podman-compose  $COMMANDS_DIRECTORY
-    fi
+
+    proceed_before_apply restart-podman-compose
 }
 
 function dangling_remove_podman(){
 
-    if [ -e $CURRENT_DIRECTORY/dangling-podman ]; then	
-        cp dangling-podman $COMMANDS_DIRECTORY
-    else
-        curl "$SCRIPT_URL/dangling-podman" -o dangling-podman
-        mv  dangling-podman  $COMMANDS_DIRECTORY
-    fi
-
+    proceed_before_apply dangling-podman
 }
 
 function podman_compose_logs(){
-    if [ -e $CURRENT_DIRECTORY/podman-compose-logs ]; then	        
-        cp  podman-compose-logs  $COMMANDS_DIRECTORY
 
-    else
-        curl "$SCRIPT_URL/podman-compose-logs" -o podman-compose-logs
-        mv  podman-compose-logs  $COMMANDS_DIRECTORY
-    fi
-
+    proceed_before_apply podman-compose-logs
 }
 
 function down_podman_containers(){
 
-    if [ -e $CURRENT_DIRECTORY/down-podman ]; then	
-        cp  down-podman  $COMMANDS_DIRECTORY
-
-    else
-        curl "$SCRIPT_URL/down-podman" -o down-podman
-        mv  down-podman  $COMMANDS_DIRECTORY
-    fi
+    proceed_before_apply down-podman
+    
 }
 
 
 function usage(){
-    if [ -e $CURRENT_DIRECTORY/easy-podman ]; then	
-        cp  easy-podman  $COMMANDS_DIRECTORY
 
-    else
-        curl "$SCRIPT_URL/easy-podman" -o easy-podman
-        mv  easy-podman  $COMMANDS_DIRECTORY
-    fi
+    proceed_before_apply easy-podman
 }
 
 
