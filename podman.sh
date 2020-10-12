@@ -6,7 +6,7 @@ VERSION="0.1"
 ISSUE_URL="https://github.com/sabuhish/easy-podman-cli"
 README_URL="https://github.com/sabuhish/easy-podman-cli"
 
-SCRIPT_URL="https://github.com/sabuhish/easy-podman-cli/blob/master"
+SCRIPT_URL="https://raw.githubusercontent.com/sabuhish/easy-podman-cli/master"
 
 CURRENT_DIRECTORY=$(pwd)
 COMMANDS_DIRECTORY=/usr/local/bin/
