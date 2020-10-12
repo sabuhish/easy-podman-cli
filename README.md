@@ -32,7 +32,7 @@ easy-podman  --help
 
 ```
 
-### List of Usefull Comands ### 
+### Available Comands
 ```bash
 
 build-podman  
