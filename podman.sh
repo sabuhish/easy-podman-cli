@@ -79,7 +79,7 @@ function podman_restart_compose(){
         mv  restart-podman-compose  $COMMANDS_DIRECTORY
  
     else
-        #curl "$README_URL" -o dangling-podman
+        #curl "$README_URL" -o  restart-podman-compose
         echo "No such a file"
         # mv  restart-podman-compose  $COMMANDS_DIRECTORY
     fi
@@ -143,7 +143,7 @@ function apply_comands(){
         podman_restart_compose
 
         cd $COMMANDS_DIRECTORY
-        
+
         chmod +x dangling-podman
         chmod +x connect-podman
         chmod +x build-podman
