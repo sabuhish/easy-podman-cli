@@ -149,4 +149,6 @@ function apply_comands(){
 
 }
 
+apply_comands
+
 rm -rf podman.sh
