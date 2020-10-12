@@ -74,7 +74,7 @@ Logs for running multi-containers
 
 ```
 ## Supported OS
-Linux, MacOS
+Linux
 
 ## 🌱 Contributing
 Fell free to open issue and send pull request.
