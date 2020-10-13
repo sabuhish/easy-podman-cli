@@ -9,7 +9,7 @@ git clone git@github.com:sabuhish/easy-podman-cli.git
 
 cd easy-podman-cli
 
-./podman.sh
+bash podman.sh
 
 ```
 or 
