@@ -6,7 +6,7 @@ VERSION="0.3"
 ISSUE_URL="https://github.com/sabuhish/easy-podman-cli/issues"
 README_URL="https://github.com/sabuhish/easy-podman-cli/blob/master/README.md"
 
-SCRIPT_URL="https://raw.githubusercontent.com/sabuhish/easy-podman-cli/master"
+SCRIPT_URL="https://raw.githubusercontent.com/sabuhish/easy-podman-cli/master/commands"
 
 CURRENT_DIRECTORY=$(pwd)
 COMMANDS_DIRECTORY=/usr/local/bin/
@@ -16,7 +16,7 @@ set -e
 
 
 function proceed_before_apply(){
-    if [ -e $CURRENT_DIRECTORY/$1 ]; then	
+    if [ -e $CURRENT_DIRECTORY/commands/$1 ]; then	
         cp  $1  $COMMANDS_DIRECTORY
 
     else
