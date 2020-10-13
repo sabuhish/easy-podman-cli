@@ -17,6 +17,7 @@ set -e
 
 function proceed_before_apply(){
     if [ -e $CURRENT_DIRECTORY/commands/$1 ]; then	
+        cd $CURRENT_DIRECTORY/commands
         cp  $1  $COMMANDS_DIRECTORY
 
     else
