@@ -20,7 +20,7 @@ function proceed_before_apply(){
         cp  $1  $COMMANDS_DIRECTORY
 
     else
-        curl "$SCRIPT_URL/$1" -o $1
+        curl "$SCRIPT_URL/commands/$1" -o $1
         mv  $1  $COMMANDS_DIRECTORY
 
     fi
